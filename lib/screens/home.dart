@@ -5,6 +5,7 @@ import 'package:mini_project/screens/detail.dart';
 import 'package:mini_project/constants/color_constant.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_project/models/popular_book.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -126,8 +127,14 @@ class _MyHomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           final route = MaterialPageRoute(
-            builder: (context) => const FavoritePage(),
-          );
+              builder: (context) {
+                return Consumer<FavoriteProvider>(
+                  builder: (context, FavoriteProvider data, widget) {
+                    return FavoritePage(
+                        popularBookData: data.favoriteBookList);
+                  },
+                );
+              });
           Navigator.push(context, route);
         },
         label: const Text('Favorites'),

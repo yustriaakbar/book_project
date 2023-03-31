@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:mini_project/provider/favorite_provider.dart';
+import 'package:mini_project/models/popular_book.dart';
 
 class FavoritePage extends StatelessWidget {
-  const FavoritePage({Key? key}) : super(key: key);
+  final List<PopularBookModel> popularBookData;
+  const FavoritePage({Key? key, required this.popularBookData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final provider = FavoriteProvider.of(context);
-    final words = provider.words;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Favorites'),
       ),
       body: ListView.builder(
-        itemCount: words.length,
+        itemCount: popularBookData.length,
         itemBuilder: (context, index) {
-          final word = words[index];
+          final PopularBookModel book = popularBookData[index];
           return ListTile(
-            title: Text("tes"),
+            title: Text(book.title),
             trailing: IconButton(
               onPressed: () {
-                provider.toggleFavorite(word);
+                provider.toggleFavorite(book);
               },
-              icon: provider.isExist(word)
+              icon: provider.isExist(book)
                   ? const Icon(Icons.favorite, color: Colors.red)
                   : const Icon(Icons.favorite_border),
             ),

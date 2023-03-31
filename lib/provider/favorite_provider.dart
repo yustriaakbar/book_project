@@ -3,26 +3,26 @@ import 'package:provider/provider.dart';
 import 'package:mini_project/models/popular_book.dart';
 
 class FavoriteProvider extends ChangeNotifier {
-  List<PopularBookModel> _words = [];
-  List<PopularBookModel> get words => _words;
+  List<PopularBookModel> _favoriteBookList = [];
+  List<PopularBookModel> get favoriteBookList => _favoriteBookList;
 
   void toggleFavorite(PopularBookModel word) {
-    final isExist = _words.contains(word);
+    final isExist =_favoriteBookList.contains(word);
     if (isExist) {
-      _words.remove(word);
+      _favoriteBookList.remove(word);
     } else {
-      _words.add(word);
+      _favoriteBookList.add(word);
     }
     notifyListeners();
   }
 
   bool isExist(PopularBookModel word) {
-    final isExist = _words.contains(word);
+    final isExist = _favoriteBookList.contains(word);
     return isExist;
   }
 
   void clearFavorite() {
-    _words = [];
+    _favoriteBookList = [];
     notifyListeners();
   }
 
