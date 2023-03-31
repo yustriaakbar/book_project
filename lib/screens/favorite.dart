@@ -17,7 +17,7 @@ class FavoritePage extends StatelessWidget {
         itemBuilder: (context, index) {
           final word = words[index];
           return ListTile(
-            title: Text(word),
+            title: Text("tes"),
             trailing: IconButton(
               onPressed: () {
                 provider.toggleFavorite(word);

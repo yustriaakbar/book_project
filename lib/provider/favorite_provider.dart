@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:mini_project/models/popular_book.dart';
 
 class FavoriteProvider extends ChangeNotifier {
-  List<String> _words = [];
-  List<String> get words => _words;
+  List<PopularBookModel> _words = [];
+  List<PopularBookModel> get words => _words;
 
-  void toggleFavorite(String word) {
+  void toggleFavorite(PopularBookModel word) {
     final isExist = _words.contains(word);
     if (isExist) {
       _words.remove(word);
@@ -15,7 +16,7 @@ class FavoriteProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool isExist(String word) {
+  bool isExist(PopularBookModel word) {
     final isExist = _words.contains(word);
     return isExist;
   }
