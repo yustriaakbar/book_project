@@ -5,6 +5,7 @@ import 'package:mini_project/screens/favorite.dart';
 import 'package:mini_project/screens/detail.dart';
 import 'package:mini_project/constants/color_constant.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mini_project/models/popular_book.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,20 +16,24 @@ class HomePage extends StatelessWidget {
     final provider = FavoriteProvider.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('English Words'),
+        title: const Text('Book App'),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
-        itemCount: words.length,
+        itemCount: populars.length,
         itemBuilder: (context, index) {
           final word = words[index];
           return GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const DetailScreen();
-              }));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailScreen(
+                      popularBookModel: populars[index]),
+                ),
+              );
             },
             child: Container(
               margin: const EdgeInsets.only(bottom: 19),
@@ -42,8 +47,8 @@ class HomePage extends StatelessWidget {
                     width: 62,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        image: const DecorationImage(
-                          image: AssetImage('assets/images/img_popular_book1.png'),
+                        image: DecorationImage(
+                          image: AssetImage(populars[index].image),
                         ),
                         color: kMainColor),
                   ),
@@ -55,7 +60,7 @@ class HomePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "Title Book",
+                        populars[index].title,
                         style: GoogleFonts.openSans(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -65,7 +70,7 @@ class HomePage extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        "Aan Mansyur",
+                        populars[index].author,
                         style: GoogleFonts.openSans(
                             fontSize: 10,
                             fontWeight: FontWeight.w400,
