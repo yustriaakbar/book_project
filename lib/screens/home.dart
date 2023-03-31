@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
               }));
             },
             child: Container(
-              margin: EdgeInsets.only(bottom: 19),
+              margin: const EdgeInsets.only(bottom: 19),
               height: 86,
               width: MediaQuery.of(context).size.width - 50,
               color: kBackgroundColor,
@@ -42,12 +42,12 @@ class HomePage extends StatelessWidget {
                     width: 62,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        image: DecorationImage(
-                          image: AssetImage('tes.jpg'),
+                        image: const DecorationImage(
+                          image: AssetImage('assets/images/img_popular_book1.png'),
                         ),
                         color: kMainColor),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 21,
                   ),
                   Column(
@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                             color: kBlackColor),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text(
@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                             color: kGreyColor),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       IconButton(
