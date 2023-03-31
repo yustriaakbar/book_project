@@ -8,7 +8,7 @@ import 'package:mini_project/models/popular_book.dart';
 class DetailScreen extends StatelessWidget {
   final PopularBookModel popularBookModel;
 
-  DetailScreen({Key? key, required this.popularBookModel}) : super(key: key);
+  const DetailScreen({Key? key, required this.popularBookModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +19,6 @@ class DetailScreen extends StatelessWidget {
         color: Colors.transparent,
         child: TextButton(
           onPressed: () {},
-          child: Text(
-            'Add to Library',
-            style: GoogleFonts.openSans(
-                fontSize: 14, fontWeight: FontWeight.w600, color: kWhiteColor),
-          ),
           style: ButtonStyle(
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
@@ -34,6 +29,11 @@ class DetailScreen extends StatelessWidget {
               const TextStyle(color: kMainColor),
             ),
             backgroundColor: MaterialStateProperty.all(kMainColor),
+          ),
+          child: Text(
+            'Add to Library',
+            style: GoogleFonts.openSans(
+                fontSize: 14, fontWeight: FontWeight.w600, color: kWhiteColor),
           ),
         ),
       ),
@@ -115,7 +115,7 @@ class DetailScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              '\$',
+                              'Rp. ',
                               style: GoogleFonts.openSans(
                                   fontSize: 14,
                                   color: kMainColor,

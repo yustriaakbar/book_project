@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => FavoriteProvider(),
       child: MaterialApp(
-        home: HomePage(),
+        home: const HomePage(),
         routes: {
-          "/homePage":(_)=>new HomePage()
+          "/homePage":(_)=> const HomePage()
         },
       ),
     );
