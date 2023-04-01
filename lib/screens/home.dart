@@ -277,7 +277,7 @@ class _MyHomePageState extends State<HomePage> {
                     },
                     child: Container(
                       margin: const EdgeInsets.only(bottom: 19),
-                      height: 86,
+                      height: 95,
                       width: MediaQuery.of(context).size.width - 50,
                       color: kBackgroundColor,
                       child: Row(

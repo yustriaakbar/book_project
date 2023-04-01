@@ -205,7 +205,7 @@ class DetailScreen extends StatelessWidget {
                                             Container(
                                               width: 120,
                                               height: 50,
-                                              margin: EdgeInsets.only(left: 80),
+                                              margin: EdgeInsets.only(left: 140),
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
@@ -239,7 +239,7 @@ class DetailScreen extends StatelessWidget {
                                             Container(
                                               width: 100,
                                               height: 50,
-                                              margin: EdgeInsets.only(left: 80),
+                                              margin: EdgeInsets.only(left: 140),
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
@@ -272,7 +272,7 @@ class DetailScreen extends StatelessWidget {
                                             Container(
                                               width: 100,
                                               height: 50,
-                                              margin: EdgeInsets.only(left: 80),
+                                              margin: EdgeInsets.only(left: 140),
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
@@ -305,7 +305,7 @@ class DetailScreen extends StatelessWidget {
                                             Container(
                                               width: 100,
                                               height: 50,
-                                              margin: EdgeInsets.only(left: 80),
+                                              margin: EdgeInsets.only(left: 140),
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
