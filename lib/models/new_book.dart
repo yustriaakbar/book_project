@@ -5,15 +5,12 @@ class NewBookModel {
 }
 var newBookData = [
   NewBookModel(
-    image: 'assets/images/img_newbook1.png',
+    image: 'assets/images/pelesir.jpg',
   ),
   NewBookModel(
-    image: 'assets/images/img_newbook2.png',
+    image: 'assets/images/hujan_bulan_juni.jpg',
   ),
   NewBookModel(
-    image: 'assets/images/img_newbook1.png',
-  ),
-  NewBookModel(
-    image: 'assets/images/img_newbook2.png',
-  ),
+    image: 'assets/images/the_goose.jpg',
+  )
 ];

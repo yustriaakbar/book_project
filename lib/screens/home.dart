@@ -6,6 +6,8 @@ import 'package:mini_project/constants/color_constant.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_project/models/popular_book.dart';
 import 'package:mini_project/models/new_book.dart';
+import 'package:mini_project/models/trending_book.dart';
+import 'package:mini_project/models/best_book.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mini_project/widgets/custom_tab_indicator.dart';
@@ -104,67 +106,123 @@ class _MyHomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                height: 25,
+                height: 280,
                 margin: const EdgeInsets.only(top: 30),
                 padding: const EdgeInsets.only(left: 25),
                 child: DefaultTabController(
                   length: 3,
-                  child: TabBar(
-                      labelPadding: const EdgeInsets.all(0),
-                      indicatorPadding: const EdgeInsets.all(0),
-                      isScrollable: true,
-                      labelColor: kBlackColor,
-                      unselectedLabelColor: kGreyColor,
-                      labelStyle: GoogleFonts.openSans(
-                          fontSize: 14, fontWeight: FontWeight.w700),
-                      unselectedLabelStyle: GoogleFonts.openSans(
-                          fontSize: 14, fontWeight: FontWeight.w600),
-                      indicator: RoundedRectangleTabIndicator(
-                          weight: 2, width: 10, color: kBlackColor),
-                      tabs: [
-                        Tab(
-                          child: Container(
-                            margin: const EdgeInsets.only(right: 23),
-                            child: const Text('New'),
-                          ),
+                  child: Column(
+                    children: <Widget>[
+                      TabBar(
+                          labelPadding: const EdgeInsets.all(0),
+                          indicatorPadding: const EdgeInsets.all(0),
+                          isScrollable: true,
+                          labelColor: kBlackColor,
+                          unselectedLabelColor: kGreyColor,
+                          labelStyle: GoogleFonts.openSans(
+                              fontSize: 14, fontWeight: FontWeight.w700),
+                          unselectedLabelStyle: GoogleFonts.openSans(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                          indicator: RoundedRectangleTabIndicator(
+                              weight: 2, width: 10, color: kBlackColor),
+                          tabs: [
+                            Tab(
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 23),
+                                child: const Text('New'),
+                              ),
+                            ),
+                            Tab(
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 23),
+                                child: const Text('Trending'),
+                              ),
+                            ),
+                            Tab(
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 23),
+                                child: const Text('Best Seller'),
+                              ),
+                            )
+                          ]),
+                      Expanded(
+                        child: TabBarView(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(top: 21),
+                              height: 150,
+                              child: ListView.builder(
+                                  padding: const EdgeInsets.only(right: 6),
+                                  itemCount: newBookData.length,
+                                  physics: const BouncingScrollPhysics(),
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    final NewBookModel newbook = newBookData[index];
+                                    return Container(
+                                      margin: const EdgeInsets.only(right: 19),
+                                      height: 150,
+                                      width: 153,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          color: kMainColor,
+                                          image: DecorationImage(
+                                            image: AssetImage(newbook.image),
+                                          )),
+                                    );
+                                  }),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(top: 21),
+                              height: 210,
+                              child: ListView.builder(
+                                  padding: const EdgeInsets.only(right: 6),
+                                  itemCount: trendingBookData.length,
+                                  physics: const BouncingScrollPhysics(),
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    final TrendingBookModel trendingbook = trendingBookData[index];
+                                    return Container(
+                                      margin: const EdgeInsets.only(right: 19),
+                                      height: 210,
+                                      width: 153,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          color: kMainColor,
+                                          image: DecorationImage(
+                                            image: AssetImage(trendingbook.image),
+                                          )),
+                                    );
+                                  }),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(top: 21),
+                              height: 210,
+                              child: ListView.builder(
+                                  padding: const EdgeInsets.only(right: 6),
+                                  itemCount: bestBookData.length,
+                                  physics: const BouncingScrollPhysics(),
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    final BestBookModel bestbook = bestBookData[index];
+                                    return Container(
+                                      margin: const EdgeInsets.only(right: 19),
+                                      height: 210,
+                                      width: 153,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          color: kMainColor,
+                                          image: DecorationImage(
+                                            image: AssetImage(bestbook.image),
+                                          )),
+                                    );
+                                  }),
+                            ),
+                          ],
                         ),
-                        Tab(
-                          child: Container(
-                            margin: const EdgeInsets.only(right: 23),
-                            child: const Text('Trending'),
-                          ),
-                        ),
-                        Tab(
-                          child: Container(
-                            margin: const EdgeInsets.only(right: 23),
-                            child: const Text('Best Seller'),
-                          ),
-                        )
-                      ]),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 21),
-                height: 210,
-                child: ListView.builder(
-                    padding: const EdgeInsets.only(left: 25, right: 6),
-                    itemCount: newBookData.length,
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      final NewBookModel newbook = newBookData[index];
-                      return Container(
-                        margin: const EdgeInsets.only(right: 19),
-                        height: 210,
-                        width: 153,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: kMainColor,
-                            image: DecorationImage(
-                              image: AssetImage(newbook.image),
-                            )),
-                      );
-                    }),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 25, top: 25),

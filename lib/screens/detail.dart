@@ -182,7 +182,7 @@ class DetailScreen extends StatelessWidget {
                           height: 2,
                         ),
                       ),
-                    )
+                    ),
                   ]))
             ],
           ),
