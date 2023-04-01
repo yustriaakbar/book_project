@@ -131,55 +131,201 @@ class DetailScreen extends StatelessWidget {
                           ],
                         )),
                     Container(
-                      height: 28,
+                      height: 500,
                       margin: const EdgeInsets.only(top: 23, bottom: 36),
-                      padding: const EdgeInsets.only(left: 25),
+                      padding: const EdgeInsets.only(left: 7),
                       child: DefaultTabController(
                         length: 3,
-                        child: TabBar(
-                            labelPadding: const EdgeInsets.all(0),
-                            indicatorPadding: const EdgeInsets.all(0),
-                            isScrollable: true,
-                            labelColor: kBlackColor,
-                            unselectedLabelColor: kGreyColor,
-                            labelStyle: GoogleFonts.openSans(
-                                fontSize: 14, fontWeight: FontWeight.w700),
-                            unselectedLabelStyle: GoogleFonts.openSans(
-                                fontSize: 14, fontWeight: FontWeight.w600),
-                            indicator: RoundedRectangleTabIndicator(
-                                weight: 2, width: 30, color: kBlackColor),
-                            tabs: [
-                              Tab(
-                                child: Container(
-                                  margin: const EdgeInsets.only(right: 39),
-                                  child: const Text('Description'),
-                                ),
-                              ),
-                              Tab(
-                                child: Container(
-                                  margin: const EdgeInsets.only(right: 39),
-                                  child: const Text('Reviews'),
-                                ),
-                              ),
-                              Tab(
-                                child: Container(
-                                  margin: const EdgeInsets.only(right: 39),
-                                  child: const Text('Similar'),
-                                ),
-                              )
-                            ]),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
-                      child: Text(
-                        popularBookModel.description,
-                        style: GoogleFonts.openSans(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: kGreyColor,
-                          letterSpacing: 1.5,
-                          height: 2,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            TabBar(
+                                labelPadding: const EdgeInsets.all(0),
+                                indicatorPadding: const EdgeInsets.only(left: 20),
+                                isScrollable: true,
+                                labelColor: kBlackColor,
+                                unselectedLabelColor: kGreyColor,
+                                labelStyle: GoogleFonts.openSans(
+                                    fontSize: 14, fontWeight: FontWeight.w700),
+                                unselectedLabelStyle: GoogleFonts.openSans(
+                                    fontSize: 14, fontWeight: FontWeight.w600),
+                                indicator: RoundedRectangleTabIndicator(
+                                    weight: 2, width: 30, color: kBlackColor),
+                                tabs: [
+                                  Tab(
+                                    child: Container(
+                                      margin: const EdgeInsets.only(left: 20, right: 39),
+                                      child: const Text('Description'),
+                                    ),
+                                  ),
+                                  Tab(
+                                    child: Container(
+                                      margin: const EdgeInsets.only(left: 20, right: 39),
+                                      child: const Text('Detail'),
+                                    ),
+                                  ),
+                                ]),
+                            Expanded(
+                                child: TabBarView(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
+                                      child: Text(
+                                        popularBookModel.description,
+                                        style: GoogleFonts.openSans(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400,
+                                          color: kGreyColor,
+                                          letterSpacing: 1.5,
+                                          height: 2,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                        padding: const EdgeInsets.only(top:25, left: 25),
+                                        child: Wrap(
+                                          direction: Axis.horizontal,
+                                          children: [
+                                            Container(
+                                              width: 120,
+                                              height: 50,
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  const Text(
+                                                      "Penerbit :"
+                                                  ),
+                                                  Text(
+                                                      popularBookModel.publisher,
+                                                      style: const TextStyle(fontWeight: FontWeight.bold)
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 120,
+                                              height: 50,
+                                              margin: EdgeInsets.only(left: 80),
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  const Text(
+                                                      "Jumlah Halaman :"
+                                                  ),
+                                                  Text(
+                                                      popularBookModel.pages.toString(),
+                                                      style: const TextStyle(fontWeight: FontWeight.bold)
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.only(top: 20),
+                                              width: 120,
+                                              height: 50,
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  const Text(
+                                                      "Tanggal Terbit :"
+                                                  ),
+                                                  Text(
+                                                      popularBookModel.dateIssue,
+                                                      style: const TextStyle(fontWeight: FontWeight.bold)
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 100,
+                                              height: 50,
+                                              margin: EdgeInsets.only(left: 80),
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  const Text(
+                                                      "Berat :"
+                                                  ),
+                                                  Text(
+                                                      popularBookModel.weight,
+                                                      style: const TextStyle(fontWeight: FontWeight.bold)
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 120,
+                                              height: 50,
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  const Text(
+                                                      "ISBN :"
+                                                  ),
+                                                  Text(
+                                                      popularBookModel.isbn,
+                                                      style: const TextStyle(fontWeight: FontWeight.bold)
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 100,
+                                              height: 50,
+                                              margin: EdgeInsets.only(left: 80),
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  const Text(
+                                                      "Lebar :"
+                                                  ),
+                                                  Text(
+                                                      '${popularBookModel.width.toString()} cm',
+                                                      style: const TextStyle(fontWeight: FontWeight.bold)
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 120,
+                                              height: 50,
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  const Text(
+                                                      "Bahasa :"
+                                                  ),
+                                                  Text(
+                                                      popularBookModel.language,
+                                                      style: const TextStyle(fontWeight: FontWeight.bold)
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 100,
+                                              height: 50,
+                                              margin: EdgeInsets.only(left: 80),
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                      "Panjang :"
+                                                  ),
+                                                  Text(
+                                                      '${popularBookModel.length.toString()} cm',
+                                                      style: const TextStyle(fontWeight: FontWeight.bold)
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                  ],
+                                )
+                            ),
+                          ],
                         ),
                       ),
                     ),
