@@ -31,7 +31,7 @@ class DetailScreen extends StatelessWidget {
             backgroundColor: MaterialStateProperty.all(kMainColor),
           ),
           child: Text(
-            'Add to Library',
+            'Add to Cart',
             style: GoogleFonts.openSans(
                 fontSize: 14, fontWeight: FontWeight.w600, color: kWhiteColor),
           ),
